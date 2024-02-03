@@ -1,0 +1,13 @@
+{
+	"authors": [
+		"Matheus Catarino França"
+	],
+	"copyright": "Copyright © 2024, Matheus Catarino França",
+	"dependencies": {
+		"vibe-d": "~>0.9"
+	},
+	"description": "Piping Server in D",
+	"license": "BSL-1.0",
+	"name": "piping-server",
+	"targetPath": "bin"
+}

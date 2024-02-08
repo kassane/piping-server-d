@@ -17,7 +17,7 @@ dub build --build=release
 
 ```bash
 Piping Server in D
-Usage: piping-server [options]
+Usage: piping-server [OPTIONS]
 Options:
   --host <HOST>              Bind address, either IPv4 or IPv6 (e.g. 127.0.0.1, ::1) [default: 0.0.0.0]
   --http-port <HTTP_PORT>    HTTP port [default: 8080]

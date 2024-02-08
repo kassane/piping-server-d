@@ -1,0 +1,23 @@
+name: CI Build
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dlang-community/setup-dlang@v1
+        with:
+          compiler: ldc-master
+
+      - name: Build (MacOS)
+        if: runner.os == 'macos'
+        run: dub --parallel --override-config vibe-d:tls/openssl-1.1 -- -V
+      - name: Build
+        if: runner.os != 'macos'
+        run: dub --parallel -- -V

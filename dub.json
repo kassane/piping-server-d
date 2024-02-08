@@ -9,5 +9,22 @@
 	"description": "Piping Server in D",
 	"license": "BSL-1.0",
 	"name": "piping-server",
-	"targetPath": "bin"
+	"targetPath": "bin",
+	"buildTypes": {
+        "debug": {
+            "buildOptions": ["debugMode", "debugInfo"]
+        },
+        "release": {
+            "buildOptions": ["releaseMode", "optimize", "inline"]
+        },
+        "release-debug": {
+            "buildOptions": ["releaseMode", "optimize", "inline", "debugInfo"]
+        },
+        "release-nobounds": {
+            "buildOptions": ["releaseMode", "optimize", "inline", "noBoundsCheck"]
+        },
+        "unittest": {
+            "buildOptions": ["unittests", "debugMode", "debugInfo"]
+        }
+	}
 }

@@ -27,3 +27,6 @@ docs/
 # Build
 build/
 bin/
+
+# Web Content
+downloads/

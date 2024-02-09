@@ -10,11 +10,8 @@ int main(string[] args)
 	bool enabletls = false;
 	auto server = new PipingServer;
 
-	size_t args_index = 0;
-	foreach (flag; args)
+	foreach (index, flag; args)
 	{
-		scope (exit)
-			args_index += 1;
 		if (flag == "--help" || flag == "-h")
 		{
 			printHelp();
@@ -24,19 +21,19 @@ int main(string[] args)
 		{
 			import std.conv;
 
-			port = to!ushort(args[args_index + 1]);
+			port = to!ushort(args[index + 1]);
 		}
 		else if (flag == "--host")
 		{
-			host = args[args_index + 1];
+			host = args[index + 1];
 		}
 		else if (flag == "--crt-path")
 		{
-			crtpath = args[args_index + 1];
+			crtpath = args[index + 1];
 		}
 		else if (flag == "--key-path")
 		{
-			keypath = args[args_index + 1];
+			keypath = args[index + 1];
 		}
 		else if (flag == "-V" || flag == "--version")
 		{
@@ -52,7 +49,7 @@ int main(string[] args)
 			// dfmt off
 			if (flag != "--host" || flag != "--http-port" || flag != "--https-port" ||
 			flag != "--crt-path" || flag != "--key-path" || flag != "--enable-https")
-			   // dfmt on
+			    // dfmt on
 			{
 				logError("Unknown option: %s", flag);
 				return -1;

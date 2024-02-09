@@ -27,7 +27,7 @@ class PipingServer
 		settings.port = port;
 	}
 
-	void connection(inout string host, immutable ushort port) @safe @nogc nothrow
+	void connection(inout string host, immutable ushort port) @safe nothrow @nogc
 	{
 		settings.port = port;
 		settings.hostName = host;
@@ -44,7 +44,7 @@ class PipingServer
 		settings.tlsContext.usePrivateKeyFile(key);
 	}
 
-	void listen() @trusted
+	void listen() @safe
 	{
 		listener = listenHTTP(settings, router);
 		scope (failure)
@@ -54,7 +54,7 @@ class PipingServer
 	}
 
 	// private module (isn't C++ private class members)
-	private void uploadFile(scope HTTPServerRequest req, scope HTTPServerResponse res)
+	private void uploadFile(scope HTTPServerRequest req, scope HTTPServerResponse res) @safe
 	{
 		import std.exception;
 

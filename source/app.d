@@ -3,6 +3,8 @@ import std.string : startsWith;
 import server;
 import vibe.core.core : runApplication;
 
+@safe:
+
 int main(string[] args)
 {
 	ushort port;
@@ -49,7 +51,7 @@ int main(string[] args)
 			// dfmt off
 			if (flag != "--host" || flag != "--http-port" || flag != "--https-port" ||
 			flag != "--crt-path" || flag != "--key-path" || flag != "--enable-https")
-			    // dfmt on
+			      // dfmt on
 			{
 				logError("Unknown option: %s", flag);
 				return -1;
@@ -73,7 +75,7 @@ int main(string[] args)
 		}
 	}
 	server.listen;
-	return runApplication(&args);
+	return (ref auto a) @trusted { return runApplication(&a); }(args); // lambda safe bypass
 }
 
 void printHelp()

@@ -15,9 +15,8 @@ jobs:
         with:
           compiler: ldc-master
 
-      - name: Build (MacOS)
-        if: runner.os == 'macos'
-        run: dub --parallel --override-config vibe-d:tls/openssl-1.1 -- -V
+      # - name: Build (MacOS)
+      #   if: runner.os == 'macos'
+      #   run: dub --parallel --override-config vibe-d:tls/openssl-1.1 -- -V
       - name: Build
-        if: runner.os != 'macos'
         run: dub --parallel -- -V
